@@ -1,10 +1,10 @@
 import React from "react";
-import Home from "./components/Home";
+import SharedLayout from "./components/SharedLayout"
 
 function App() {
   return (
     <div>
-     <Home/>
+     <SharedLayout/>
     </div>
   );
 }
