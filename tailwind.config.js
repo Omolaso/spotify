@@ -15,9 +15,11 @@ module.exports = {
       },
       colors:{
         black: '#000000',
+        veryLightBlack: '#1B1B1B',
         lightBlack: '#121212',
         white: '#FFFFFF',
         grey: '#E5E5E5',
+        normalGrey: '#ccc',
         buttonGrey: '#F6F6F6',
       },
     },
