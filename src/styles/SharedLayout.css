@@ -1,24 +1,8 @@
-/* #shared-container{
-    display: grid;
-    grid-template-columns: auto auto auto auto auto auto;
-    grid-template-areas: 
-    'side header header header header header header'
-    'side main main main main main main'
-    'side main main main main main main';
+/* for topnav */
+#vertical-bar{
+    content: "|";
+    width: 1px;
+    height: 25px;
+    background: white;
 }
-
-#navs{ 
-    grid-area: side;
-    border: 1px solid red;
-}
-
-#top-navs{
-    grid-area: header;
-    height: 100px;
-    border: 1px solid red;
-}
-
-#outlets{
-    grid-area: main;
-    border: 1px solid red;
-} */
+/* for topnav */
