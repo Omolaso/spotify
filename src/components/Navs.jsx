@@ -1,5 +1,4 @@
 import React from 'react';
-import '../styles/Navs.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpotify } from '@fortawesome/free-brands-svg-icons';
 import { faHome, faSearch, faAdd, faBook, faHeart } from '@fortawesome/free-solid-svg-icons';
