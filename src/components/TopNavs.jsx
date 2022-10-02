@@ -23,7 +23,7 @@ const TopNavs = () => {
 
 
   return (
-    <main className='flex items-center justify-between bg-veryLightBlack text-normalGrey p-4 h-16 '>
+    <main className='flex items-center justify-between bg-lightBlack text-normalGrey p-4 h-16 '>
         <div className='flex items-center justify-between w-20'>
             <FontAwesomeIcon icon={faChevronLeft} onClick={goBack} className='bg-lightBlack p-2 rounded-full'/>
             <FontAwesomeIcon icon={faChevronRight} onClick={goForward} className='bg-lightBlack p-2 rounded-full'/>

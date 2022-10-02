@@ -11,7 +11,7 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        sans: ['Poppins', 'sans-serif']
+        sans: ['Poppins', 'sans-serif', 'Helvetica']
       },
       colors:{
         black: '#000000',
@@ -20,8 +20,10 @@ module.exports = {
         white: '#FFFFFF',
         grey: '#E5E5E5',
         normalGrey: '#ccc',
+        darkGrey: '#444040',
+        darkGreyHover: '#9e9393',
         buttonGrey: '#F6F6F6',
-        facebookButton: '#039BE5',
+        facebookButton: '#082fce',
       },
     },
   },
