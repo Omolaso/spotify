@@ -48,38 +48,38 @@ const SignUp = () => {
 
       <form className='mt-4 text-left w-1/2 mx-auto'>
 
-        <div id="email" className='flex flex-col mb-6'>
+        <div className='flex flex-col mb-6'>
           <label htmlFor="email" className='text-sm font-bold mb-1'>What's your email?</label>
-          <input type="email" placeholder='Enter your email' className='border w-full py-3 px-3 hover:border-black rounded' />
+          <input type="email" id='email' name='email' placeholder='Enter your email' className='border w-full py-3 px-3 hover:border-black rounded' />
           <a href="spotify.com" className='underline text-green-700'>Use phone number instead.</a>
         </div>
 
         <div id="confirm-email" className='flex flex-col mb-6'>
-          <label htmlFor="email" className='text-sm font-bold mb-1'>Confirm your email</label>
-          <input type="email" placeholder='Enter your email again' className='border w-full py-3 px-3 hover:border-black rounded'/>
+          <label htmlFor="confirmEmail" className='text-sm font-bold mb-1'>Confirm your email</label>
+          <input type="email" id='confirmEmail' name='confirmEmail' placeholder='Enter your email again' className='border w-full py-3 px-3 hover:border-black rounded'/>
         </div>
 
-        <div id="password" className='flex flex-col mb-6'>
+        <div className='flex flex-col mb-6'>
           <label htmlFor="password" className='text-sm font-bold mb-1'>Create a password</label>
-          <input type="password" placeholder='Create a password' className='border w-full py-3 px-3 hover:border-black rounded'/>
+          <input type="password" id='password' name='password' placeholder='Create a password' className='border w-full py-3 px-3 hover:border-black rounded'/>
         </div>
 
-        <div id="name" className='flex flex-col mb-6'>
+        <div className='flex flex-col mb-6'>
           <label htmlFor="name" className='text-sm font-bold mb-1'>What should we call you?</label>
-          <input type="password" placeholder='Enter a profile name' className='border w-full py-3 px-3 hover:border-black rounded'/>
+          <input type="password" id="name" name="name"  placeholder='Enter a profile name' className='border w-full py-3 px-3 hover:border-black rounded'/>
           <p className='text-sm mt-1'>This appears on your profile.</p>
         </div>
 
         <div id="DOB" className='mb-6'>
-          <label htmlFor="name" className='text-sm font-bold mb-1'>What's your date of birth?</label>
+          <label htmlFor="DOB" className='text-sm font-bold mb-1'>What's your date of birth?</label>
           <section id="dob-inputs" className='flex flex-row gap-x-4 mt-2'>
              
-            <div id='day' className='flex-[0.2]'>
+            <div className='flex-[0.2]'>
               <label htmlFor="day" className='text-sm font-bold mb-1'>Day</label>
-              <input type="text" placeholder='DD' className='border w-full py-3 px-3 hover:border-black rounded'/>
+              <input type="text" id='day' name='day' placeholder='DD' className='border w-full py-3 px-3 hover:border-black rounded'/>
             </div>
 
-            <div id='month' className='flex-[0.5]'>
+            <div className='flex-[0.5]'>
               <label htmlFor="month" className='text-sm font-bold mb-1'>Month</label>
               <select id="month" className='border w-full py-3 px-3 hover:border-black rounded' placeholder='Month'>
                 <option value="" disabled selected>Month</option>
@@ -98,27 +98,27 @@ const SignUp = () => {
               </select>
             </div>
 
-            <div id='year' className='flex-[0.3]'>
+            <div className='flex-[0.3]'>
               <label htmlFor="year" className='text-sm font-bold mb-1'>Year</label>
-              <input type="text" placeholder='YYYY' className='border w-full py-3 px-3 hover:border-black rounded'/>
+              <input type="text" id='year' name='year' placeholder='YYYY' className='border w-full py-3 px-3 hover:border-black rounded'/>
             </div>
           </section>
         </div>
 
         <div id='radio' className='mb-6'>
-          <label htmlFor="name" className='text-sm font-bold mb-1'>What's your gender?</label>
+          <label htmlFor="gender" className='text-sm font-bold mb-1'>What's your gender?</label>
           <section className='flex flex-row gap-x-4 mt-2'>
 
             <div id='male'>
-              <input type="radio" name="gender" value='male'/> <label htmlFor="male">Male</label>
+              <input type="radio" name="gender" id='male-gender' value='male'/> <label htmlFor="male-gender">Male</label>
             </div>
             
             <div id="female">
-              <input type="radio" name="gender" value='female'/> <label htmlFor="female"> Female</label>
+              <input type="radio" name="gender" id='female-gender' value='female'/> <label htmlFor="female-gender"> Female</label>
             </div>
             
             <div id="non">
-              <input type="radio" name="gender" value='Not saying'/><label htmlFor="not saying"> Prefer not to say</label>
+              <input type="radio" name="gender" id='trans-gender' value='Not saying'/><label htmlFor="trans-gender"> Prefer not to say</label>
             </div>
           </section>
         </div>
@@ -126,12 +126,12 @@ const SignUp = () => {
         <div id="checkbox">
 
           <section id='marketing-messages' className='flex flex-row items-center gap-x-2 text-sm mb-6'>
-            <input type="checkbox" value="marketing"/>
+            <input type="checkbox" id='marketing' value="marketing"/>
             <label htmlFor="marketing">I would prefer not to receive marketing messages from Spotify</label>
           </section>
           
           <section id='registration-data' className='flex flex-row items-center gap-x-2 text-sm'>
-            <input type="checkbox" value="registration"/>
+            <input type="checkbox" id='registration' value="registration"/>
             <label htmlFor="registration" className=''> Share my registration data with Spotify's content providers for marketing purposes.</label>
           </section>
         </div>
