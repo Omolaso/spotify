@@ -58,13 +58,13 @@ const Footer = () => {
 
         <div id='footer-links' className='flex flex-row items-center justify-between my-8 '>
 
-           <section className='flex flex-row flex-1 items-center gap-x-4'>
+           <section className='flex flex-row flex-1 items-center gap-x-4 text-[15px]'>
                 <a href="https://www.spotify.com" className='hover:underline hover:text-white hover:font-normal text-normalGrey font-normal'>Legal</a>
                 <a href="https://www.spotify.com" className='hover:underline hover:text-white hover:font-normal text-normalGrey font-normal'>Privacy Center</a>
                 <a href="https://www.spotify.com" className='hover:underline hover:text-white hover:font-normal text-normalGrey font-normal'>Privacy Policy</a>
                 <a href="https://www.spotify.com" className='hover:underline hover:text-white hover:font-normal text-normalGrey font-normal'>Cookies</a>
                 <a href="https://www.spotify.com" className='hover:underline hover:text-white hover:font-normal text-normalGrey font-normal'>About ADs</a>
-                <a href="https://www.spotify.com" className='hover:underline hover:text-white hover:font-normal text-normalGrey font-normal'>Additional CA Privacy Disclosures</a>
+                {/* <a href="https://www.spotify.com" className='hover:underline hover:text-white hover:font-normal text-normalGrey font-normal'>Additional CA Privacy Disclosures</a> */}
            </section>
 
            <section className='text-normalGrey text-sm'>

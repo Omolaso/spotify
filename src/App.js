@@ -5,6 +5,7 @@ import { Routes, Route } from 'react-router-dom';
 import Login from "./components/Login";
 import Search from "./components/Search";
 import SignUp from "./components/SignUp";
+import ForgotPassword from "./components/ForgotPassword"
 
 function App() {
   return (
@@ -16,8 +17,9 @@ function App() {
           <Route path="/search" element={<Search/>}/>
         </Route>
 
-        <Route path="login" element={<Login/>}/>
-        <Route path="signup" element={<SignUp/>}/>
+        <Route path="/login" element={<Login/>}/>
+        <Route path="/signup" element={<SignUp/>}/>
+        <Route path="/forgotpassword" element={<ForgotPassword/>}/>
      </Routes>
     </>
   );

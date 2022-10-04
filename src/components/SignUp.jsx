@@ -7,22 +7,22 @@ import { faSpotify, faFacebook } from '@fortawesome/free-brands-svg-icons';
 
 const SignUp = () => {
   return (
-    <main className='w-[65%] max-w-4xl mx-auto text-center py-10'>
+    <main className='w-full max-w-4xl mx-auto text-center py-10 px-4'>
       <header>
-        <h1 className='text-2xl font-bold'><FontAwesomeIcon icon={faSpotify} className='text-4xl align-middle'/> Spotify</h1>
-        <h3 className='text-4xl font-semibold mt-8'>Sign up for free to start <br /> listening.</h3>
+        <h1 className='text-lg md:text-2xl font-bold'><FontAwesomeIcon icon={faSpotify} className='text-3xl md:text-4xl align-middle'/> Spotify</h1>
+        <h3 className='text-2xl md:text-4xl font-semibold mt-8'>Sign up for free to start <br /> listening.</h3>
       </header>
 
       <div
         id="signup-buttons"
-        className='mt-10 flex flex-col items-center'
+        className='mt-10 flex flex-col items-center w-full max-w-xs lg:max-w-sm mx-auto'
         >
-          <button className='flex items-center justify-around bg-facebookButton mb-4 px-[85px] py-[12px] rounded-3xl hover:px-[92px] hover:py-[14px]'>
+          <button className='flex items-center justify-center bg-facebookButton mb-4 w-full py-[12px] rounded-3xl hover:w-[105%] hover:py-[14px] hover:blur-[.5px]'>
               <FontAwesomeIcon icon={faFacebook} className='text-white mr-6 text-lg'/>
               <span className='font-semibold text-white'>Sign up with Facebook</span>
           </button>
 
-          <button className='flex items-center justify-around border-2 border-darkGrey mb-4 px-[85px] py-[10px] rounded-3xl hover:px-[92px] hover:py-[12px]'>
+          <button className='flex items-center justify-center border-2 border-darkGrey mb-4 w-full py-[10px] rounded-3xl hover:w-[105%] hover:py-[14px]'>
             <img 
               src={google} 
               alt="google"
@@ -33,7 +33,7 @@ const SignUp = () => {
 
       </div>
 
-      <div id="breaker" className='flex items-center justify-between w-1/2 mx-auto max-w-sm mt-2 text-darkGrey'>
+      <div id="breaker" className='flex items-center justify-between w-full mx-auto max-w-md lg:max-w-sm mt-2 text-darkGrey'>
         <div className='w-[40%]'>
           <hr/>
         </div>
@@ -46,7 +46,7 @@ const SignUp = () => {
       </div>
 
 
-      <form className='mt-4 text-left w-1/2 mx-auto'>
+      <form className='mt-4 text-left w-full mx-auto max-w-lg'>
 
         <div className='flex flex-col mb-6'>
           <label htmlFor="email" className='text-sm font-bold mb-1'>What's your email?</label>
@@ -82,7 +82,7 @@ const SignUp = () => {
             <div className='flex-[0.5]'>
               <label htmlFor="month" className='text-sm font-bold mb-1'>Month</label>
               <select id="month" className='border w-full py-3 px-3 hover:border-black rounded' placeholder='Month'>
-                <option value="" disabled selected>Month</option>
+                <option disabled selected className='text-normalGrey'>Month</option>
                 <option value="January">January</option>
                 <option value="February">February</option>
                 <option value="March">March</option>
@@ -107,7 +107,7 @@ const SignUp = () => {
 
         <div id='radio' className='mb-6'>
           <label htmlFor="gender" className='text-sm font-bold mb-1'>What's your gender?</label>
-          <section className='flex flex-row gap-x-4 mt-2'>
+          <section className='flex flex-row gap-x-4 mt-2 flex-wrap'>
 
             <div id='male'>
               <input type="radio" name="gender" id='male-gender' value='male'/> <label htmlFor="male-gender">Male</label>
@@ -125,12 +125,12 @@ const SignUp = () => {
 
         <div id="checkbox">
 
-          <section id='marketing-messages' className='flex flex-row items-center gap-x-2 text-sm mb-6'>
+          <section id='marketing-messages' className='flex flex-row items-start gap-x-2 text-sm mb-6'>
             <input type="checkbox" id='marketing' value="marketing"/>
             <label htmlFor="marketing">I would prefer not to receive marketing messages from Spotify</label>
           </section>
           
-          <section id='registration-data' className='flex flex-row items-center gap-x-2 text-sm'>
+          <section id='registration-data' className='flex flex-row items-start gap-x-2 text-sm'>
             <input type="checkbox" id='registration' value="registration"/>
             <label htmlFor="registration" className=''> Share my registration data with Spotify's content providers for marketing purposes.</label>
           </section>
@@ -142,10 +142,9 @@ const SignUp = () => {
             <a href="https://www.spotify.com" className='hover:opacity-80 underline text-green-700'> Privacy Policy.</a> 
           </p>
           <button type="submit" className='bg-green-500 py-4 px-10 rounded-3xl font-bold'> Sign Up</button>
-          <p> Have an account? <Link to='/login' className='hover:opacity-80 underline text-green-700'> Log in.</Link> </p>
         </div>
       </form>
-
+      <p> Have an account? <Link to='/login' className='hover:opacity-80 underline text-green-700'> Log in.</Link> </p>
     </main>
   )
 }
