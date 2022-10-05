@@ -3,6 +3,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import google from '../images/google.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpotify, faFacebook, faApple } from '@fortawesome/free-brands-svg-icons';
+import { useFormik } from 'formik';
+import validate from './Validate';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -10,10 +12,29 @@ const Login = () => {
   const toSignup = () => {
     navigate('/signup');
   }
+
+  // FORMIK
+
+  const formik = useFormik({
+    initialValues: {
+      email: '',
+      password: '',
+    },
+    validate,
+    onSubmit: values => {
+      alert(JSON.stringify(values, null, 2));
+
+    },
+  });
+
+  // FORMIK
+
   return (
       <main className='text-center'>
         <header>
-          <h1 className='text-2xl md:text-4xl font-bold my-3 md:my-6'><FontAwesomeIcon icon={faSpotify} className='text-5xl md:text-6xl align-middle'/> Spotify</h1>
+          <Link to='/' className='hover:cursor-default'>
+            <h1 className='text-2xl md:text-4xl font-bold my-3 md:my-6'><FontAwesomeIcon icon={faSpotify} className='text-5xl md:text-6xl align-middle'/> Spotify</h1>
+          </Link>
         </header>
 
         <hr/>
@@ -63,16 +84,41 @@ const Login = () => {
           </div>
 
 
-          <form className='mt-4 text-left w-full max-w-md mx-auto'>
+          <form
+            onSubmit={formik.handleSubmit}
+            className='mt-4 text-left w-full max-w-md mx-auto'
+            >
 
             <div className='flex flex-col mb-6'>
               <label htmlFor="email" className='text-sm font-bold mb-1'>Email address or username</label>
-              <input type="email" id='email' name='email' placeholder='Email address or username' className='border w-full py-3 px-3 hover:border-black rounded'/>
+              <input
+                type="email" 
+                id='email' 
+                name='email' 
+                placeholder='Email address or username' 
+                className='border w-full py-3 px-3 hover:border-black rounded'
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.email} 
+              />
+              {formik.touched.email && formik.errors.email ? <div>{formik.errors.email}</div> : null}
             </div>
 
             <div className='flex flex-col mb-6'>
               <label htmlFor="password" className='text-sm font-bold mb-1'>Password</label>
-              <input type="password" id='password' name='password' placeholder='Password' className='border w-full py-3 px-3 hover:border-black rounded'/>
+              <input 
+                type="password" 
+                id='password' 
+                name='password' 
+                placeholder='Password'
+                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters"
+                className='border w-full py-3 px-3 hover:border-black rounded'
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.password}
+              />
+              {formik.touched.password && formik.errors.password ? <div className='text-red-500'>{formik.errors.password}</div> : null}
             </div>
             <Link to='/forgotpassword' className='hover:underline hover:cursor-text'>Forgot your password?</Link>
 
