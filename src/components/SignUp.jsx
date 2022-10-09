@@ -11,32 +11,40 @@ import validate from './Validate';
 
 const SignUp = () => {
 
+  // function formReset(values){
+  //   values.email.reset()
+  // }
+
+
   const formik = useFormik({
     initialValues: {
       email: '',
       password: '',
       confirmPassword: '',
       name: '',
+      day: '',
+      month: '',
+      year: '',
     },
     validate,
     onSubmit: (values) => {
       // alert(JSON.stringify(values, null, 2));
-      window.location.reload();
       alert('Your details are now saved to your browser local storage');
       window.localStorage.setItem("Email", `${values.email}`);
       window.localStorage.setItem("Password", `${values.password}`);
       window.localStorage.setItem("Name", `${values.name}`);
+      window.localStorage.setItem("D.O.B", `${values.day}th of ${values.month}, ${values.year}.`);
+      // formReset(values)
     },
   });
-
 
 
 
   return (
     <main className='w-full max-w-4xl mx-auto text-center py-10 px-4'>
       <header>
-        <Link to='/' className='hover:cursor-default'>
-          <h1 className='text-lg md:text-2xl font-bold'><FontAwesomeIcon icon={faSpotify} className='text-3xl md:text-4xl align-middle'/> Spotify</h1>
+        <Link to='/' className='hover:cursor-default text-lg md:text-2xl font-bold'>
+          <FontAwesomeIcon icon={faSpotify} className='text-3xl md:text-4xl align-middle'/> Spotify
         </Link>
         <h3 className='text-2xl md:text-4xl font-semibold mt-8'>Sign up for free to start <br /> listening.</h3>
       </header>
@@ -77,9 +85,9 @@ const SignUp = () => {
       <form 
         className='mt-4 text-left w-full mx-auto max-w-lg'
         onSubmit={formik.handleSubmit}
-      >
+        >
 
-        <div className='flex flex-col mb-6'>
+        <div className='flex flex-col'>
           <label htmlFor="email" className='text-sm font-bold mb-1'>What's your email?</label>
           <input 
             type="email" 
@@ -92,10 +100,10 @@ const SignUp = () => {
             value={formik.values.email} 
           />
           {formik.touched.email && formik.errors.email ? <div className='text-red-500 text-sm font-bold'>{formik.errors.email}</div> : null}
-          <a href="spotify.com" className='underline text-green-700'>Use phone number instead.</a>
         </div>
+        <a href="https://www.spotify.com" className='underline text-green-700'>Use phone number instead.</a>
 
-        <div className='flex flex-col mb-6'>
+        <div className='flex flex-col my-6'>
           <label htmlFor="password" className='text-sm font-bold mb-1'>Create a password</label>
           <input 
             type="password" 
@@ -160,13 +168,25 @@ const SignUp = () => {
                 className='border w-full py-3 px-3 hover:border-black rounded'
                 min="1"
                 max="31"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.day}
               />
+              {formik.touched.day && formik.errors.day ? <div className='text-red-500 text-sm font-bold'>{formik.errors.day}</div> : null}
             </div>
 
             <div className='flex-[0.5]'>
               <label htmlFor="month" className='text-sm font-bold mb-1'>Month</label>
-              <select id="month" className='border w-full py-3 px-3 hover:border-black rounded' placeholder='Month'>
-                <option disabled selected className='text-normalGrey'>Month</option>
+              <select 
+                id="month" 
+                name="month" 
+                className='border w-full py-3 px-3 hover:border-black rounded' 
+                placeholder='Month'
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.month}
+              >
+                <option disabled selected className='text-normalGrey' value=''>Month</option>
                 <option value="January">January</option>
                 <option value="February">February</option>
                 <option value="March">March</option>
@@ -180,6 +200,7 @@ const SignUp = () => {
                 <option value="November">November</option>
                 <option value="December">December</option>
               </select>
+              {formik.touched.month && formik.errors.month ? <div className='text-red-500 text-sm font-bold'>{formik.errors.month}</div> : null}
             </div>
 
             <div className='flex-[0.3]'>
@@ -192,7 +213,11 @@ const SignUp = () => {
                 className='border w-full py-3 px-3 hover:border-black rounded'
                 min="1980"
                 max="2022"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.year}
               />
+              {formik.touched.year && formik.errors.year ? <div className='text-red-500 text-sm font-bold'>{formik.errors.year}</div> : null}
             </div>
           </section>
         </div>

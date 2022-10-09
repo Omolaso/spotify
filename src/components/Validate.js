@@ -24,15 +24,27 @@ const Validate = (values) => {
 
         if (!values.name) {
           errors.name = 'Name is required';
-        } else if (values.name.length >= 15) {
-          errors.lastName = 'Must be less than 15 characters';
+        } else if (values.name.length >= 24) {
+          errors.name = 'Must be less than 25 characters';
         }
 
-        // if (!values.firstName) {
-        //   errors.firstName = 'Required';
-        // } else if (values.firstName.length > 15) {
-        //   errors.firstName = 'Must be 15 characters or less';
-        // }
+        if (!values.day) {
+          errors.day = 'Day cannot be blank';
+        } 
+        else if (values.day < 1 || values.day > 31) {
+          errors.day = 'Day of birth is incorrect';
+        }
+
+        if (!values.month) {
+          errors.month = 'Month cannot be blank';
+        } 
+
+        if (!values.year) {
+          errors.year = 'Year cannot be blank';
+        } 
+        else if (values.year < 1980 || values.year > 2022) {
+          errors.year = 'Year of birth is incorrect';
+        }
       
      
       
