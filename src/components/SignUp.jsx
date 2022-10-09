@@ -152,7 +152,15 @@ const SignUp = () => {
              
             <div className='flex-[0.2]'>
               <label htmlFor="day" className='text-sm font-bold mb-1'>Day</label>
-              <input type="text" id='day' name='day' placeholder='DD' className='border w-full py-3 px-3 hover:border-black rounded'/>
+              <input 
+                type="number" 
+                id='day' 
+                name='day' 
+                placeholder='DD' 
+                className='border w-full py-3 px-3 hover:border-black rounded'
+                min="1"
+                max="31"
+              />
             </div>
 
             <div className='flex-[0.5]'>
@@ -176,7 +184,15 @@ const SignUp = () => {
 
             <div className='flex-[0.3]'>
               <label htmlFor="year" className='text-sm font-bold mb-1'>Year</label>
-              <input type="text" id='year' name='year' placeholder='YYYY' className='border w-full py-3 px-3 hover:border-black rounded'/>
+              <input 
+                type="number" 
+                id='year' 
+                name='year' 
+                placeholder='YYYY' 
+                className='border w-full py-3 px-3 hover:border-black rounded'
+                min="1980"
+                max="2022"
+              />
             </div>
           </section>
         </div>

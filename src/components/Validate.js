@@ -1,19 +1,7 @@
 
 const Validate = (values) => {
 
-
       const errors = {};
-        // if (!values.firstName) {
-        //   errors.firstName = 'Required';
-        // } else if (values.firstName.length > 15) {
-        //   errors.firstName = 'Must be 15 characters or less';
-        // }
-      
-        if (!values.name) {
-          errors.name = 'Name is required';
-        } else if (values.name.length >= 15) {
-          errors.lastName = 'Must be less than 15 characters';
-        }
       
         if (!values.email) {
           errors.email = 'Email can not be blank';
@@ -33,9 +21,21 @@ const Validate = (values) => {
         if (values.confirmPassword !== values.password) {
           errors.confirmPassword = 'Passwords must match';
         }
-        // else if (values.password.length < 8) {
-        //   errors.password = 'Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters';
+
+        if (!values.name) {
+          errors.name = 'Name is required';
+        } else if (values.name.length >= 15) {
+          errors.lastName = 'Must be less than 15 characters';
+        }
+
+        // if (!values.firstName) {
+        //   errors.firstName = 'Required';
+        // } else if (values.firstName.length > 15) {
+        //   errors.firstName = 'Must be 15 characters or less';
         // }
+      
+     
+      
       
         return errors;
 }
