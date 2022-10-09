@@ -1,6 +1,7 @@
 
 const Validate = (values) => {
 
+
       const errors = {};
         // if (!values.firstName) {
         //   errors.firstName = 'Required';
@@ -8,14 +9,14 @@ const Validate = (values) => {
         //   errors.firstName = 'Must be 15 characters or less';
         // }
       
-        // if (!values.lastName) {
-        //   errors.lastName = 'Required';
-        // } else if (values.lastName.length > 20) {
-        //   errors.lastName = 'Must be 20 characters or less';
-        // }
+        if (!values.name) {
+          errors.name = 'Name is required';
+        } else if (values.name.length >= 15) {
+          errors.lastName = 'Must be less than 15 characters';
+        }
       
         if (!values.email) {
-          errors.email = 'Required';
+          errors.email = 'Email can not be blank';
         } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
           errors.email = 'Invalid email address';
         }
@@ -24,10 +25,17 @@ const Validate = (values) => {
         // }
 
         if (!values.password) {
-          errors.password = 'Required';
+          errors.password = 'Password can not be blank';
         } else if (values.password.length < 8) {
           errors.password = 'Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters';
         }
+
+        if (values.confirmPassword !== values.password) {
+          errors.confirmPassword = 'Passwords must match';
+        }
+        // else if (values.password.length < 8) {
+        //   errors.password = 'Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters';
+        // }
       
         return errors;
 }

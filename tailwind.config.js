@@ -24,6 +24,8 @@ module.exports = {
         darkGreyHover: '#9e9393',
         buttonGrey: '#F6F6F6',
         facebookButton: '#082fce',
+        formErrorColor: '#e74c3c',
+
       },
     },
   },

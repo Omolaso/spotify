@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import google from '../images/google.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faCircleExclamation } from "@fortawesome/free-solid-svg-icons";
 import { faSpotify, faFacebook, faApple } from '@fortawesome/free-brands-svg-icons';
 import { useFormik } from 'formik';
 import validate from './Validate';
@@ -21,9 +22,12 @@ const Login = () => {
       password: '',
     },
     validate,
-    onSubmit: values => {
-      alert(JSON.stringify(values, null, 2));
-
+    onSubmit: (values) => {
+      // alert(JSON.stringify(values, null, 2));
+      // window.location.reload();
+      alert('Your details are now saved to your browser local storage');
+      window.localStorage.setItem("Email", `${values.email}`);
+      window.localStorage.setItem("Password", `${values.password}`);
     },
   });
 
@@ -101,7 +105,7 @@ const Login = () => {
                 onBlur={formik.handleBlur}
                 value={formik.values.email} 
               />
-              {formik.touched.email && formik.errors.email ? <div>{formik.errors.email}</div> : null}
+              {formik.touched.email && formik.errors.email ? <div className='text-formErrorColor text-sm font-bold'>{formik.errors.email}</div> : null}
             </div>
 
             <div className='flex flex-col mb-6'>
@@ -118,7 +122,7 @@ const Login = () => {
                 onBlur={formik.handleBlur}
                 value={formik.values.password}
               />
-              {formik.touched.password && formik.errors.password ? <div className='text-red-500'>{formik.errors.password}</div> : null}
+              {formik.touched.password && formik.errors.password ? <div className='text-red-500 text-sm font-bold'>{formik.errors.password}</div> : null}
             </div>
             <Link to='/forgotpassword' className='hover:underline hover:cursor-text'>Forgot your password?</Link>
 
