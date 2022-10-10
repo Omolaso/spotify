@@ -5,15 +5,12 @@ import google from '../images/google.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpotify, faFacebook } from '@fortawesome/free-brands-svg-icons';
 import { useFormik } from 'formik';
+// import * as Yup from 'yup';
 import validate from './Validate';
 
 
 
 const SignUp = () => {
-
-  // function formReset(values){
-  //   values.email.reset()
-  // }
 
 
   const formik = useFormik({
@@ -25,7 +22,13 @@ const SignUp = () => {
       day: '',
       month: '',
       year: '',
+      gender: '',
+      // marketing: false,
     },
+    // validationSchema: Yup.object({
+    //   email: Yup.string().email('Invalid email address').required('Email can not be blank'),
+    //   password: Yup.string().password()
+    // }),
     validate,
     onSubmit: (values) => {
       // alert(JSON.stringify(values, null, 2));
@@ -34,7 +37,10 @@ const SignUp = () => {
       window.localStorage.setItem("Password", `${values.password}`);
       window.localStorage.setItem("Name", `${values.name}`);
       window.localStorage.setItem("D.O.B", `${values.day}th of ${values.month}, ${values.year}.`);
-      // formReset(values)
+      window.localStorage.setItem("Gender", `${values.gender}`);
+      // window.localStorage.setItem("I would prefer not to receive marketing messages from Spotify", `${values.marketing}`);
+      // resetForm();
+      // console.log('Email:', `${values.email}`);
     },
   });
 
@@ -85,6 +91,7 @@ const SignUp = () => {
       <form 
         className='mt-4 text-left w-full mx-auto max-w-lg'
         onSubmit={formik.handleSubmit}
+        // onReset={formik.handleReset}
         >
 
         <div className='flex flex-col'>
@@ -94,10 +101,11 @@ const SignUp = () => {
             id='email' 
             name='email' 
             placeholder='Enter your email' 
-            className='border w-full py-3 px-3 hover:border-black rounded'
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.email} 
+            className='border w-full py-3 px-3 hover:border-black rounded' 
+            // onChange={formik.handleChange}
+            // onBlur={formik.handleBlur}
+            // value={formik.values.year}
+            {...formik.getFieldProps('email')}
           />
           {formik.touched.email && formik.errors.email ? <div className='text-red-500 text-sm font-bold'>{formik.errors.email}</div> : null}
         </div>
@@ -113,9 +121,7 @@ const SignUp = () => {
             className='border w-full py-3 px-3 hover:border-black rounded'
             pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
             title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.password}
+            {...formik.getFieldProps('password')}
           />
           {formik.touched.password && formik.errors.password ? <div className='text-red-500 text-sm font-bold'>{formik.errors.password}</div> : null}
         </div>
@@ -130,9 +136,7 @@ const SignUp = () => {
             className='border w-full py-3 px-3 hover:border-black rounded'
             pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
             title="Must match password"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.confirmPassword}
+            {...formik.getFieldProps('confirmPassword')}
           />
           {formik.touched.confirmPassword && formik.errors.confirmPassword ? <div className='text-red-500 text-sm font-bold'>{formik.errors.confirmPassword}</div> : null}
         </div>
@@ -145,13 +149,10 @@ const SignUp = () => {
             name="name" 
             placeholder='Enter a profile name' 
             className='border w-full py-3 px-3 hover:border-black rounded'
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.name}
+            {...formik.getFieldProps('name')}
           />
           <p className='text-sm mt-1'>This appears on your profile.</p>
           {formik.touched.name && formik.errors.name ? <div className='text-red-500 text-sm font-bold'>{formik.errors.name}</div> : null}
-
         </div>
 
         <div id="DOB" className='mb-6'>
@@ -168,9 +169,7 @@ const SignUp = () => {
                 className='border w-full py-3 px-3 hover:border-black rounded'
                 min="1"
                 max="31"
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                value={formik.values.day}
+                {...formik.getFieldProps('day')}
               />
               {formik.touched.day && formik.errors.day ? <div className='text-red-500 text-sm font-bold'>{formik.errors.day}</div> : null}
             </div>
@@ -182,9 +181,7 @@ const SignUp = () => {
                 name="month" 
                 className='border w-full py-3 px-3 hover:border-black rounded' 
                 placeholder='Month'
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                value={formik.values.month}
+                {...formik.getFieldProps('month')}
               >
                 <option disabled selected className='text-normalGrey' value=''>Month</option>
                 <option value="January">January</option>
@@ -213,9 +210,7 @@ const SignUp = () => {
                 className='border w-full py-3 px-3 hover:border-black rounded'
                 min="1980"
                 max="2022"
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                value={formik.values.year}
+                {...formik.getFieldProps('year')}
               />
               {formik.touched.year && formik.errors.year ? <div className='text-red-500 text-sm font-bold'>{formik.errors.year}</div> : null}
             </div>
@@ -224,27 +219,54 @@ const SignUp = () => {
 
         <div id='radio' className='mb-6'>
           <label htmlFor="gender" className='text-sm font-bold mb-1'>What's your gender?</label>
-          <section className='flex flex-row gap-x-4 mt-2 flex-wrap'>
+          <section 
+            className='grid grid-cols-2 md:grid-cols-3 mt-2 '
+            // onChange={formik.handleChange}
+            // onBlur={formik.handleBlur}
+            // value={formik.values.gender}
+            {...formik.getFieldProps('gender')}
+          >
 
             <div id='male'>
-              <input type="radio" name="gender" id='male-gender' value='male'/> <label htmlFor="male-gender">Male</label>
+              <input 
+                type="radio" 
+                name="gender" 
+                id='male-gender' 
+                value='male'
+              />
+              <label htmlFor="male-gender"> Male</label>
             </div>
             
             <div id="female">
-              <input type="radio" name="gender" id='female-gender' value='female'/> <label htmlFor="female-gender"> Female</label>
+              <input 
+                type="radio" 
+                name="gender" 
+                id='female-gender' 
+                value='female'
+              />
+              <label htmlFor="female-gender"> Female</label>
             </div>
             
             <div id="non">
-              <input type="radio" name="gender" id='trans-gender' value='Not saying'/><label htmlFor="trans-gender"> Prefer not to say</label>
+              <input 
+                type="radio" 
+                name="gender" 
+                id='trans-gender' 
+                value='Not saying'
+              />
+              <label htmlFor="trans-gender"> Prefer not to say</label>
             </div>
+            {formik.touched.gender && formik.errors.gender ? <div className='text-red-500 text-sm font-bold'>{formik.errors.gender}</div> : null}
           </section>
         </div>
 
         <div id="checkbox">
 
           <section id='marketing-messages' className='flex flex-row items-start gap-x-2 text-sm mb-6'>
-            <input type="checkbox" id='marketing' value="marketing"/>
+            {/* Because of FORMIK and because its a single checkbox, the value is initially false */}
+            <input type="checkbox" id='marketing' name='marketing'/> 
             <label htmlFor="marketing">I would prefer not to receive marketing messages from Spotify</label>
+
           </section>
           
           <section id='registration-data' className='flex flex-row items-start gap-x-2 text-sm'>
@@ -261,6 +283,7 @@ const SignUp = () => {
           <button type="submit" className='bg-green-500 py-4 px-10 rounded-3xl font-bold'> Sign Up</button>
         </div>
       </form>
+
       <p> Have an account? <Link to='/login' className='hover:opacity-80 underline text-green-700'> Log in.</Link> </p>
     </main>
   )

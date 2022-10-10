@@ -25,9 +25,10 @@ const Login = () => {
     onSubmit: (values) => {
       // alert(JSON.stringify(values, null, 2));
       // window.location.reload();
-      alert('Your details are now saved to your browser local storage');
-      window.localStorage.setItem("Email", `${values.email}`);
-      window.localStorage.setItem("Password", `${values.password}`);
+      // alert('Your details are now saved to your browser local storage');
+      // window.localStorage.setItem("Email", `${values.email}`);
+      // window.localStorage.setItem("Password", `${values.password}`);
+      console.log("Email", `${values.email}`)
     },
   });
 
@@ -35,9 +36,9 @@ const Login = () => {
 
   return (
       <main className='text-center'>
-        <header>
-          <Link to='/' className='hover:cursor-default'>
-            <h1 className='text-2xl md:text-4xl font-bold my-3 md:my-6'><FontAwesomeIcon icon={faSpotify} className='text-5xl md:text-6xl align-middle'/> Spotify</h1>
+        <header className='py-3 md:py-6'>
+          <Link to='/' className='hover:cursor-default text-2xl md:text-4xl font-bold'>
+            <FontAwesomeIcon icon={faSpotify} className='text-5xl md:text-6xl align-middle'/> Spotify
           </Link>
         </header>
 

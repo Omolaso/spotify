@@ -45,6 +45,16 @@ const Validate = (values) => {
         else if (values.year < 1980 || values.year > 2022) {
           errors.year = 'Year of birth is incorrect';
         }
+
+        if (!values.gender) {
+          errors.gender = 'Please select your gender';
+        } 
+
+        // if (!values.marketing.checked) {
+        //   values.marketing = false;
+        // } else{
+        //   values.marketing = true;
+        // }
       
      
       
