@@ -3,6 +3,8 @@ import '../styles/SharedLayout.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+// import { render } from "react-dom";
+// import { motion } from "framer-motion";
 
 const TopNavs = () => {
     const navigate = useNavigate();
@@ -30,23 +32,23 @@ const TopNavs = () => {
         </div>
 
         <ul className='flex items-center justify-between flex-1 max-w-lg font-medium text-base cursor-auto'>
-            <li>
+            <li className='hover:scale-105'>
                 <a href="spotify.com" target="_blank" className='hover:text-white'>Premium</a>
             </li>
-            <li>
+            <li className='hover:scale-105'>
                 <a href="spotify.com" target="_blank" className='hover:text-white'>Support</a>
             </li>
-            <li>
+            <li className='hover:scale-105'>
                 <a href="spotify.com" target="_blank" className='hover:text-white'>Download</a>
             </li>
 
             <li id='vertical-bar'></li>
          
-            <li>
+            <li className='hover:scale-105'>
                 <Link to="/signup" className='hover:text-white'>Sign Up</Link>
             </li>
             <li>
-                <button className='bg-buttonGrey text-black px-8 py-3 rounded-full' onClick={login}>
+                <button className='bg-buttonGrey text-black px-8 py-3 rounded-full hover:scale-105' onClick={login}>
                     Log in
                 </button>
             </li>

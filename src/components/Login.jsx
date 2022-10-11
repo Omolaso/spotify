@@ -5,7 +5,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import { faCircleExclamation } from "@fortawesome/free-solid-svg-icons";
 import { faSpotify, faFacebook, faApple } from '@fortawesome/free-brands-svg-icons';
 import { useFormik } from 'formik';
-import validate from './Validate';
+import * as Yup from 'yup';
+// import validate from './Validate';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -21,14 +22,18 @@ const Login = () => {
       email: '',
       password: '',
     },
-    validate,
-    onSubmit: (values) => {
+    validationSchema: Yup.object({
+      email: Yup.string().email('Invalid email address').required('Email can not be blank'),
+    }),
+    // validate,
+    onSubmit: (values, {resetForm}) => {
       // alert(JSON.stringify(values, null, 2));
       // window.location.reload();
       // alert('Your details are now saved to your browser local storage');
       // window.localStorage.setItem("Email", `${values.email}`);
       // window.localStorage.setItem("Password", `${values.password}`);
-      console.log("Email", `${values.email}`)
+      console.log("Email", `${values.email}`);
+      resetForm({values: ''});
     },
   });
 
@@ -52,17 +57,17 @@ const Login = () => {
             id="login-buttons"
             className='flex flex-col items-center max-w-lg mx-auto'
             >
-              <button className='flex items-center justify-center bg-facebookButton mb-4 w-full py-[12px] rounded-3xl hover:cursor-auto'>
+              <button className='flex items-center justify-center bg-facebookButton mb-4 w-full py-[12px] rounded-3xl hover:scale-105 transition-all hover:cursor-auto'>
                   <FontAwesomeIcon icon={faFacebook} className='text-white mr-6 text-lg hidden md:block'/>
                   <span className='font-semibold text-white'>Continue with Facebook</span>
               </button>
 
-              <button className='flex items-center justify-center bg-black mb-4 w-full py-[12px] rounded-3xl hover:cursor-auto'>
+              <button className='flex items-center justify-center bg-black mb-4 w-full py-[12px] rounded-3xl hover:scale-105 transition-all hover:cursor-auto'>
                   <FontAwesomeIcon icon={faApple} className='text-white mr-6 text-lg hidden md:block'/>
                   <span className='font-semibold text-white'>CONTINUE WITH APPLE</span>
               </button>
 
-              <button className='flex items-center justify-center border border-darkGreyHover hover:border-black mb-4 w-full py-[10px] rounded-3xl hover:cursor-auto'>
+              <button className='flex items-center justify-center border border-darkGreyHover hover:border-black hover:scale-105 transition-all mb-4 w-full py-[10px] rounded-3xl hover:cursor-auto'>
                 <img 
                   src={google} 
                   alt="google"
@@ -71,7 +76,7 @@ const Login = () => {
                 <span className='font-semibold text-darkGreyHover'> CONTINUE WITH GOOGLE </span>
               </button>
 
-              <button className='border border-darkGreyHover hover:border-black mb-4 w-full py-[10px] rounded-3xl hover:cursor-auto'>
+              <button className='border border-darkGreyHover hover:border-black mb-4 w-full py-[10px] hover:scale-105 transition-all rounded-3xl hover:cursor-auto'>
                   <span className='font-semibold text-darkGreyHover'>CONTINUE WITH PHONE NUMBER</span>
               </button>
           </div>
@@ -91,6 +96,7 @@ const Login = () => {
 
           <form
             onSubmit={formik.handleSubmit}
+            onReset={formik.handleReset}
             className='mt-4 text-left w-full max-w-md mx-auto'
             >
 
@@ -102,9 +108,7 @@ const Login = () => {
                 name='email' 
                 placeholder='Email address or username' 
                 className='border w-full py-3 px-3 hover:border-black rounded'
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                value={formik.values.email} 
+                {...formik.getFieldProps('email')}
               />
               {formik.touched.email && formik.errors.email ? <div className='text-formErrorColor text-sm font-bold'>{formik.errors.email}</div> : null}
             </div>
@@ -119,9 +123,7 @@ const Login = () => {
                 pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                 title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters"
                 className='border w-full py-3 px-3 hover:border-black rounded'
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                value={formik.values.password}
+                {...formik.getFieldProps('password')}
               />
               {formik.touched.password && formik.errors.password ? <div className='text-red-500 text-sm font-bold'>{formik.errors.password}</div> : null}
             </div>

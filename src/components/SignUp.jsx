@@ -22,7 +22,7 @@ const SignUp = () => {
       day: '',
       month: '',
       year: '',
-      gender: '',
+      gender: false,
       // marketing: false,
     },
     // validationSchema: Yup.object({
@@ -30,7 +30,7 @@ const SignUp = () => {
     //   password: Yup.string().password()
     // }),
     validate,
-    onSubmit: (values) => {
+    onSubmit: (values, {resetForm}) => {
       // alert(JSON.stringify(values, null, 2));
       alert('Your details are now saved to your browser local storage');
       window.localStorage.setItem("Email", `${values.email}`);
@@ -41,6 +41,9 @@ const SignUp = () => {
       // window.localStorage.setItem("I would prefer not to receive marketing messages from Spotify", `${values.marketing}`);
       // resetForm();
       // console.log('Email:', `${values.email}`);
+      resetForm({values: ''},
+        values.gender.checked = false
+      );
     },
   });
 
@@ -59,12 +62,12 @@ const SignUp = () => {
         id="signup-buttons"
         className='mt-10 flex flex-col items-center w-full max-w-xs lg:max-w-sm mx-auto'
         >
-          <button className='flex items-center justify-center bg-facebookButton mb-4 w-full py-[12px] rounded-3xl hover:w-[105%] hover:py-[14px] hover:blur-[.5px]'>
+          <button className='flex items-center justify-center bg-facebookButton mb-4 w-full py-[12px] rounded-3xl hover:scale-105 transition-all hover:blur-[.5px]'>
               <FontAwesomeIcon icon={faFacebook} className='text-white mr-6 text-lg'/>
               <span className='font-semibold text-white'>Sign up with Facebook</span>
           </button>
 
-          <button className='flex items-center justify-center border-2 border-darkGrey mb-4 w-full py-[10px] rounded-3xl hover:w-[105%] hover:py-[14px]'>
+          <button className='flex items-center justify-center border-2 border-darkGrey mb-4 w-full py-[8px] rounded-3xl hover:scale-105 transition-all'>
             <img 
               src={google} 
               alt="google"

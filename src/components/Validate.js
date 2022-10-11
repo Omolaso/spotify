@@ -46,7 +46,7 @@ const Validate = (values) => {
           errors.year = 'Year of birth is incorrect';
         }
 
-        if (!values.gender) {
+        if (values.gender === false) {
           errors.gender = 'Please select your gender';
         } 
 
