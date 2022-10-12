@@ -5,8 +5,8 @@ import google from '../images/google.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpotify, faFacebook } from '@fortawesome/free-brands-svg-icons';
 import { useFormik } from 'formik';
-// import * as Yup from 'yup';
-import validate from './Validate';
+import * as Yup from 'yup';
+// import validate from './Validate';
 
 
 
@@ -25,11 +25,11 @@ const SignUp = () => {
       gender: false,
       // marketing: false,
     },
-    // validationSchema: Yup.object({
-    //   email: Yup.string().email('Invalid email address').required('Email can not be blank'),
-    //   password: Yup.string().password()
-    // }),
-    validate,
+    validationSchema: Yup.object({
+      email: Yup.string().email('Invalid email address').required('Email can not be blank'),
+      // password: Yup.string().password()
+    }),
+    // validate,
     onSubmit: (values, {resetForm}) => {
       // alert(JSON.stringify(values, null, 2));
       alert('Your details are now saved to your browser local storage');
@@ -39,10 +39,9 @@ const SignUp = () => {
       window.localStorage.setItem("D.O.B", `${values.day}th of ${values.month}, ${values.year}.`);
       window.localStorage.setItem("Gender", `${values.gender}`);
       // window.localStorage.setItem("I would prefer not to receive marketing messages from Spotify", `${values.marketing}`);
-      // resetForm();
       // console.log('Email:', `${values.email}`);
-      resetForm({values: ''},
-        values.gender.checked = false
+      resetForm({values:''},
+        // values.gender.checked = false
       );
     },
   });

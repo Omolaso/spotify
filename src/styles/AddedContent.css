@@ -1,0 +1,6 @@
+#errorSign::before{
+    content: "❌";
+    font-size: 10px;
+    vertical-align: top;
+    margin-right: 2px;
+}

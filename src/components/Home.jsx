@@ -1,16 +1,16 @@
 import React from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 
 
 
 const Home = () => {
  
-  const URL = 'https://api.spotify.com/v1/audio-analysis/6EJiVf7U0p1BBfs0qqeb1f'; 
+  // const URL = 'https://api.spotify.com/v1/audio-analysis/6EJiVf7U0p1BBfs0qqeb1f'; 
   
-  axios.get(URL)
-  .then((res) =>{
-    console.log(res.data);
-  })
+  // axios.get(URL)
+  // .then((res) =>{
+  //   console.log(res.data);
+  // })
 
 
 //   fetch("https://api.spotify.com/v1/audio-analysis/6EJiVf7U0p1BBfs0qqeb1f", {

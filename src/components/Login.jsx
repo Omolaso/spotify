@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpotify, faFacebook, faApple } from '@fortawesome/free-brands-svg-icons';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import '../styles/AddedContent.css';
 // import validate from './Validate';
 
 const Login = () => {
@@ -21,19 +22,23 @@ const Login = () => {
     initialValues: {
       email: '',
       password: '',
+      remember: false,
     },
     validationSchema: Yup.object({
       email: Yup.string()
-        .required('Email can not be blank')
+        .required('Email is required')
         .email('Invalid email address'),
         
-
       password: Yup.string()
         .required('Password is required')
         .min(8, 'Password is too short. Minimum of 8 characters.')
         .max(10, 'Password must be at most 10 characters')
         .matches( /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/, 
           'Password must contain at least one number, one uppercase, one lowercase letter and a dynamic symbol.'),
+
+      // remember: Yup.boolean()
+      //   .optional()
+      //   .oneOf([true, false]),
     }),
     // validate,
     onSubmit: (values, {resetForm}) => {
@@ -43,6 +48,7 @@ const Login = () => {
       // window.localStorage.setItem("Password", `${values.password}`);
       console.log("Email:", `${values.email}`);
       console.log("Password:", `${values.password}`);
+      console.log("Remember:", `${values.remember}`);
       resetForm({values: ''});
     },
   });
@@ -106,7 +112,7 @@ const Login = () => {
 
           <form
             onSubmit={formik.handleSubmit}
-            onReset={formik.handleReset}
+            // onReset={formik.handleReset}
             className='mt-4 text-left w-full max-w-md mx-auto'
             >
 
@@ -120,7 +126,7 @@ const Login = () => {
                 className='border w-full py-3 px-3 hover:border-black rounded'
                 {...formik.getFieldProps('email')}
               />
-              {formik.touched.email && formik.errors.email ? <div className='text-formErrorColor text-sm font-bold'>{formik.errors.email}</div> : null}
+              {formik.touched.email && formik.errors.email ? <div id='errorSign' className='text-formErrorColor text-sm font-bold'>{formik.errors.email}</div> : null}
             </div>
 
             <div className='flex flex-col mb-6'>
@@ -135,7 +141,7 @@ const Login = () => {
                 className='border w-full py-3 px-3 hover:border-black rounded'
                 {...formik.getFieldProps('password')}
               />
-              {formik.touched.password && formik.errors.password ? <div className='text-red-500 text-sm font-bold'>{formik.errors.password}</div> : null}
+              {formik.touched.password && formik.errors.password ? <div id='errorSign' className='text-red-500 text-sm font-bold'>{formik.errors.password}</div> : null}
             </div>
             <Link to='/forgotpassword' className='hover:underline hover:cursor-text'>Forgot your password?</Link>
 
