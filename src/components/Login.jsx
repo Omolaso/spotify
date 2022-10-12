@@ -23,16 +23,26 @@ const Login = () => {
       password: '',
     },
     validationSchema: Yup.object({
-      email: Yup.string().email('Invalid email address').required('Email can not be blank'),
+      email: Yup.string()
+        .required('Email can not be blank')
+        .email('Invalid email address'),
+        
+
+      password: Yup.string()
+        .required('Password is required')
+        .min(8, 'Password is too short. Minimum of 8 characters.')
+        .max(10, 'Password must be at most 10 characters')
+        .matches( /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/, 
+          'Password must contain at least one number, one uppercase, one lowercase letter and a dynamic symbol.'),
     }),
     // validate,
     onSubmit: (values, {resetForm}) => {
       // alert(JSON.stringify(values, null, 2));
-      // window.location.reload();
       // alert('Your details are now saved to your browser local storage');
       // window.localStorage.setItem("Email", `${values.email}`);
       // window.localStorage.setItem("Password", `${values.password}`);
-      console.log("Email", `${values.email}`);
+      console.log("Email:", `${values.email}`);
+      console.log("Password:", `${values.password}`);
       resetForm({values: ''});
     },
   });
@@ -120,8 +130,8 @@ const Login = () => {
                 id='password' 
                 name='password' 
                 placeholder='Password'
-                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-                title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters"
+                // pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                title="Password must contain at least a digit, an uppercase and lowercase letter, a dynamic symbol and at least 8 characters"
                 className='border w-full py-3 px-3 hover:border-black rounded'
                 {...formik.getFieldProps('password')}
               />
