@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import google from '../images/google.png';
-// import facebook from '../images/facebook.svg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpotify, faFacebook } from '@fortawesome/free-brands-svg-icons';
 import { useFormik } from 'formik';
@@ -26,23 +25,49 @@ const SignUp = () => {
       // marketing: false,
     },
     validationSchema: Yup.object({
-      email: Yup.string().email('Invalid email address').required('Email can not be blank'),
-      // password: Yup.string().password()
+      email: Yup.string()
+        .required('Email is required')
+        .email('Invalid email address'),
+
+      password: Yup.string()
+        .required('Password is required')
+        .min(8, 'Password is too short. Minimum of 8 characters.')
+        .max(10, 'Password must be at most 10 characters')
+        .matches( /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/, 
+          'Password must contain at least one number, one uppercase, one lowercase letter and a dynamic symbol.'),
+
+      confirmPassword: Yup.string()
+        .required('Please confirm your password')
+        .oneOf([Yup.ref('password'), null], 'Passwords must match'),
+
+      name: Yup.string()
+        .required('Include a profile name'),
+
+      day: Yup.number()
+        .min(1, 'Invalid')
+        .max(31, 'Invalid')
+        .required('Required'),
+
+      month: Yup.string()
+        .required('Required'),
+
+      year: Yup.date()
+        .min(1980, 'Invalid')
+        .max(2022, 'Invalid')
+        .required('Required'),
+
     }),
     // validate,
     onSubmit: (values, {resetForm}) => {
-      // alert(JSON.stringify(values, null, 2));
       alert('Your details are now saved to your browser local storage');
       window.localStorage.setItem("Email", `${values.email}`);
       window.localStorage.setItem("Password", `${values.password}`);
       window.localStorage.setItem("Name", `${values.name}`);
       window.localStorage.setItem("D.O.B", `${values.day}th of ${values.month}, ${values.year}.`);
-      window.localStorage.setItem("Gender", `${values.gender}`);
-      // window.localStorage.setItem("I would prefer not to receive marketing messages from Spotify", `${values.marketing}`);
+      // window.localStorage.setItem("Gender", `${values.gender}`);
       // console.log('Email:', `${values.email}`);
-      resetForm({values:''},
-        // values.gender.checked = false
-      );
+
+      resetForm({values:''});
     },
   });
 
@@ -109,7 +134,7 @@ const SignUp = () => {
             // value={formik.values.year}
             {...formik.getFieldProps('email')}
           />
-          {formik.touched.email && formik.errors.email ? <div className='text-red-500 text-sm font-bold'>{formik.errors.email}</div> : null}
+          {formik.touched.email && formik.errors.email ? <div id='errorSign' className='text-red-500 text-sm font-bold'>{formik.errors.email}</div> : null}
         </div>
         <a href="https://www.spotify.com" className='underline text-green-700'>Use phone number instead.</a>
 
@@ -125,7 +150,7 @@ const SignUp = () => {
             title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters"
             {...formik.getFieldProps('password')}
           />
-          {formik.touched.password && formik.errors.password ? <div className='text-red-500 text-sm font-bold'>{formik.errors.password}</div> : null}
+          {formik.touched.password && formik.errors.password ? <div id='errorSign' className='text-red-500 text-sm font-bold'>{formik.errors.password}</div> : null}
         </div>
 
         <div id="confirm-password" className='flex flex-col mb-6'>
@@ -140,7 +165,7 @@ const SignUp = () => {
             title="Must match password"
             {...formik.getFieldProps('confirmPassword')}
           />
-          {formik.touched.confirmPassword && formik.errors.confirmPassword ? <div className='text-red-500 text-sm font-bold'>{formik.errors.confirmPassword}</div> : null}
+          {formik.touched.confirmPassword && formik.errors.confirmPassword ? <div id='errorSign' className='text-red-500 text-sm font-bold'>{formik.errors.confirmPassword}</div> : null}
         </div>
 
         <div className='flex flex-col mb-6'>
@@ -154,26 +179,26 @@ const SignUp = () => {
             {...formik.getFieldProps('name')}
           />
           <p className='text-sm mt-1'>This appears on your profile.</p>
-          {formik.touched.name && formik.errors.name ? <div className='text-red-500 text-sm font-bold'>{formik.errors.name}</div> : null}
+          {formik.touched.name && formik.errors.name ? <div id='errorSign' className='text-red-500 text-sm font-bold'>{formik.errors.name}</div> : null}
         </div>
 
         <div id="DOB" className='mb-6'>
           <label htmlFor="DOB" className='text-sm font-bold mb-1'>What's your date of birth?</label>
           <section id="dob-inputs" className='flex flex-row gap-x-4 mt-2'>
              
-            <div className='flex-[0.2]'>
+            <div className='flex-[0.25]'>
               <label htmlFor="day" className='text-sm font-bold mb-1'>Day</label>
               <input 
                 type="number" 
                 id='day' 
                 name='day' 
                 placeholder='DD' 
-                className='border w-full py-3 px-3 hover:border-black rounded'
-                min="1"
-                max="31"
+                className='border w-full py-3 px-2 hover:border-black rounded'
+                // min="1"
+                // max="31"
                 {...formik.getFieldProps('day')}
               />
-              {formik.touched.day && formik.errors.day ? <div className='text-red-500 text-sm font-bold'>{formik.errors.day}</div> : null}
+              {formik.touched.day && formik.errors.day ? <div id='errorSign' className='text-red-500 text-sm font-bold'>{formik.errors.day}</div> : null}
             </div>
 
             <div className='flex-[0.5]'>
@@ -199,10 +224,10 @@ const SignUp = () => {
                 <option value="November">November</option>
                 <option value="December">December</option>
               </select>
-              {formik.touched.month && formik.errors.month ? <div className='text-red-500 text-sm font-bold'>{formik.errors.month}</div> : null}
+              {formik.touched.month && formik.errors.month ? <div id='errorSign' className='text-red-500 text-sm font-bold'>{formik.errors.month}</div> : null}
             </div>
 
-            <div className='flex-[0.3]'>
+            <div className='flex-[0.35]'>
               <label htmlFor="year" className='text-sm font-bold mb-1'>Year</label>
               <input 
                 type="number" 
@@ -210,11 +235,11 @@ const SignUp = () => {
                 name='year' 
                 placeholder='YYYY' 
                 className='border w-full py-3 px-3 hover:border-black rounded'
-                min="1980"
-                max="2022"
+                // min="1980"
+                // max="2022"
                 {...formik.getFieldProps('year')}
               />
-              {formik.touched.year && formik.errors.year ? <div className='text-red-500 text-sm font-bold'>{formik.errors.year}</div> : null}
+              {formik.touched.year && formik.errors.year ? <div id='errorSign' className='text-red-500 text-sm font-bold'>{formik.errors.year}</div> : null}
             </div>
           </section>
         </div>
@@ -277,7 +302,7 @@ const SignUp = () => {
           </section>
         </div>
 
-        <div id='conditions' className='flex flex-col items-center gap-y-3 mt-6'>
+        <div id='conditions' className='flex flex-col items-center gap-y-3 mt-6 mb-3'>
           <p className='text-sm text-center'> By clicking on sign-up, you agree to the 
             <a href="https://www.spotify.com" className='hover:opacity-80 underline text-green-700'> Spotify Terms and Conditions</a> and 
             <a href="https://www.spotify.com" className='hover:opacity-80 underline text-green-700'> Privacy Policy.</a> 

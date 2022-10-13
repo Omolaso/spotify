@@ -43,12 +43,10 @@ const Login = () => {
     // validate,
     onSubmit: (values, {resetForm}) => {
       // alert(JSON.stringify(values, null, 2));
-      // alert('Your details are now saved to your browser local storage');
-      // window.localStorage.setItem("Email", `${values.email}`);
-      // window.localStorage.setItem("Password", `${values.password}`);
-      console.log("Email:", `${values.email}`);
-      console.log("Password:", `${values.password}`);
-      console.log("Remember:", `${values.remember}`);
+      alert('Your details are now saved to your browser local storage');
+      window.localStorage.setItem("Email", `${values.email}`);
+      window.localStorage.setItem("Password", `${values.password}`);
+      // console.log("Remember:", `${values.remember}`);
       resetForm({values: ''});
     },
   });
