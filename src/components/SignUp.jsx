@@ -66,7 +66,6 @@ const SignUp = () => {
       window.localStorage.setItem("D.O.B", `${values.day}th of ${values.month}, ${values.year}.`);
       // window.localStorage.setItem("Gender", `${values.gender}`);
       // console.log('Email:', `${values.email}`);
-
       resetForm({values:''});
     },
   });

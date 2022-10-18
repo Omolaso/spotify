@@ -25,7 +25,6 @@ module.exports = {
         buttonGrey: '#F6F6F6',
         facebookButton: '#082fce',
         formErrorColor: '#e74c3c',
-
       },
     },
   },
