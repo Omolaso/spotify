@@ -31,14 +31,16 @@ const TopNavs = () => {
                 <FontAwesomeIcon icon={faChevronLeft} onClick={goBack} className='bg-lightBlack p-2 rounded-full text-lg'/>
                 <FontAwesomeIcon icon={faChevronRight} onClick={goForward} className='bg-lightBlack p-2 rounded-full text-lg'/>
             </div>
-            <div className='flex flex-row items-center flex-[1.5] justify-between h-12 bg-white ml-3 rounded-3xl py-2 px-3'>
+            <div className='flex flex-row items-center flex-[1.5] justify-between h-11 bg-white ml-3 rounded-3xl px-3'>
                 <FontAwesomeIcon icon={faSearch} className='text-black text-2xl'/>
                 <input 
                     type="search"
                     name="search"
                     id="search"
                     placeholder='What do you want to listen to?'
-                    className='py-4 h-6 flex-[2] focus:outline-none ml-3'
+                    className='py-4 h-6 flex-[2] focus:outline-none ml-3  text-black'
+                    autoComplete='off'
+                    autoFocus
                 />
                 <FontAwesomeIcon 
                     icon={faClose}
