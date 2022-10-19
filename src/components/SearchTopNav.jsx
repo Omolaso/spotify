@@ -31,7 +31,7 @@ const TopNavs = () => {
                 <FontAwesomeIcon icon={faChevronLeft} onClick={goBack} className='bg-lightBlack p-2 rounded-full text-lg'/>
                 <FontAwesomeIcon icon={faChevronRight} onClick={goForward} className='bg-lightBlack p-2 rounded-full text-lg'/>
             </div>
-            <div className='flex flex-row items-center flex-[1.5] justify-between h-11 bg-white ml-3 rounded-3xl px-3'>
+            <div className='flex flex-row items-center flex-[1.5] justify-between h-10 bg-white ml-3 rounded-3xl px-3'>
                 <FontAwesomeIcon icon={faSearch} className='text-black text-2xl'/>
                 <input 
                     type="search"
