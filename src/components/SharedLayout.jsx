@@ -9,7 +9,7 @@ const SharedLayout = () => {
 
 
   return (
-    <main className='flex'>
+    <main className='flex flex-row'>
 
        <section id='side-nav' className='w-[250px]'>
           <Navs/>

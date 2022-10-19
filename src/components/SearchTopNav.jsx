@@ -2,7 +2,7 @@ import React from 'react';
 import '../styles/SharedLayout.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { faChevronLeft, faChevronRight, faSearch, faClose } from '@fortawesome/free-solid-svg-icons';
 // import { render } from "react-dom";
 // import { motion } from "framer-motion";
 
@@ -26,9 +26,25 @@ const TopNavs = () => {
 
   return (
     <main className='flex items-center justify-between bg-lightBlack text-normalGrey p-4 h-16 '>
-        <div className='flex items-center justify-between flex-1 max-w-[80px]'>
-            <FontAwesomeIcon icon={faChevronLeft} onClick={goBack} className='bg-lightBlack p-2 rounded-full text-lg'/>
-            <FontAwesomeIcon icon={faChevronRight} onClick={goForward} className='bg-lightBlack p-2 rounded-full text-lg'/>
+        <div className='flex items-center justify-between flex-1 max-w-lg'>
+            <div className='flex flex-row items-center justify-between flex-[2] max-w-[80px]'>
+                <FontAwesomeIcon icon={faChevronLeft} onClick={goBack} className='bg-lightBlack p-2 rounded-full text-lg'/>
+                <FontAwesomeIcon icon={faChevronRight} onClick={goForward} className='bg-lightBlack p-2 rounded-full text-lg'/>
+            </div>
+            <div className='flex flex-row items-center flex-[1.5] justify-between h-12 bg-white ml-3 rounded-3xl py-2 px-3'>
+                <FontAwesomeIcon icon={faSearch} className='text-black text-2xl'/>
+                <input 
+                    type="search"
+                    name="search"
+                    id="search"
+                    placeholder='What do you want to listen to?'
+                    className='py-4 h-6 flex-[2] focus:outline-none ml-3'
+                />
+                <FontAwesomeIcon 
+                    icon={faClose}
+                    className='text-black text-3xl'
+                />
+            </div>
         </div>
 
         <ul className='flex items-center justify-between flex-[0.6] max-w-lg font-medium text-base cursor-auto'>

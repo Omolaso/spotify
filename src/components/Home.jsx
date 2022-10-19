@@ -27,7 +27,7 @@ const Home = () => {
 // })
 
   return (
-    <div className='text-white'>
+    <div className='text-white p-4'>
       <h1>Home</h1>
     </div>
   )
