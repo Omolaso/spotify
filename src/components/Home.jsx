@@ -1,35 +1,65 @@
-import React from 'react';
-// import axios from 'axios';
+import React, {useState, useEffect} from 'react';
+import axios from 'axios';
+import '../styles/SharedLayout.css';
+
 
 
 
 const Home = () => {
+  const [musics, setMusics] = useState([]);
  
-  // const URL = 'https://api.spotify.com/v1/audio-analysis/6EJiVf7U0p1BBfs0qqeb1f'; 
+  const getData = () => {
+    axios.get('https://jsonplaceholder.typicode.com/photos')
+    .then((res) =>{
+      // console.log(res.data);
+      setMusics(res.data)
+    })
+  }
+
+  useEffect(() => {
+    getData();
+  }, [musics])
+
+  // const [id, albumId, title, url] = musics;
+
+  // const options = {
+  //   method: 'GET',
+  //   url: 'https://spotify81.p.rapidapi.com/tracks',
+  //   params: {id: '4WNcduiCmDNfmTEz7JvmLv'},
+  //   headers: {
+  //     'X-RapidAPI-Key': '40d1032632mshda3c84c837afc5ap12a269jsnf3bf560cef23',
+  //     'X-RapidAPI-Host': 'spotify81.p.rapidapi.com'
+  //   }
+  // };
   
-  // axios.get(URL)
-  // .then((res) =>{
-  //   console.log(res.data);
-  // })
+  // axios.request(options).then(function (response) {
+  //   console.log(response.data);
+  // }).catch(function (error) {
+  //   console.error(error);
+  // });
 
-
-//   fetch("https://api.spotify.com/v1/audio-analysis/6EJiVf7U0p1BBfs0qqeb1f", {
-//   method: "GET",
-//   headers: {
-//     Authorization: `Bearer ${userAccessToken}`
-//   }
-// })
-// .then(response => response.json())
-// .then(({beats}) => {
-//   beats.forEach((beat, index) => {
-//     console.log(`Beat ${index} starts at ${beat.start}`);
-//   })
-// })
+  if(musics.length < 1){
+    return(
+      <div className='text-white'>Please Wait</div>
+    )
+  }
 
   return (
-    <div className='text-white p-4'>
-      <h1>Home</h1>
-    </div>
+    <main className='text-white p-4'>
+      
+      {
+        // JSON.stringify(musics)
+        musics.map((music) =>(
+          <ul key={music.id}>
+            <li>
+                <img src={music.albumId} alt={music.title}/>
+                <a href={music.url}>Know More</a>
+            </li>
+          </ul>
+        ))
+      }
+
+    </main>
   )
 }
 

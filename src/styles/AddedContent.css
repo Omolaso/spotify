@@ -1,6 +1,18 @@
+/* ERROR SIGN */
 #errorSign::before{
     content: "❌";
     font-size: 10px;
     vertical-align: top;
     margin-right: 2px;
+}
+
+/* SEARCH INPUT CLOSE ICON */
+.searchInputCloseActive{
+    display: block;
+    color: black;
+    font-size: 30px;
+}
+
+.searchInputClose{
+    display: none;
 }

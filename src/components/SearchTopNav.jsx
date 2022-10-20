@@ -1,12 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../styles/SharedLayout.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight, faSearch, faClose } from '@fortawesome/free-solid-svg-icons';
-// import { render } from "react-dom";
-// import { motion } from "framer-motion";
+
+
+
 
 const TopNavs = () => {
+    const [inputValue, setInputValue] = useState('');
+    function clearInputValue(){
+        setInputValue('')
+    }
+
+
     const navigate = useNavigate();
 
     const login = () => {
@@ -41,10 +48,13 @@ const TopNavs = () => {
                     className='py-4 h-6 flex-[2] focus:outline-none ml-3  text-black'
                     autoComplete='off'
                     autoFocus
+                    value={inputValue}
+                    onChange={(e) => {setInputValue(e.target.value)}}
                 />
                 <FontAwesomeIcon 
                     icon={faClose}
-                    className='text-black text-3xl'
+                    className={inputValue ? 'searchInputCloseActive' : 'searchInputClose'}
+                    onClick={clearInputValue}
                 />
             </div>
         </div>
