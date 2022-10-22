@@ -7,11 +7,12 @@ import { faChevronLeft, faChevronRight, faSearch, faClose } from '@fortawesome/f
 
 
 
-const SearchTopNavs = ({setMusics, musics}) => {
+const SearchTopNavs = ({setMusics, musics, toggleReload, reload}) => {
     const [inputValue, setInputValue] = useState('');
     // CLEAR SEARCH-INPUT
     function clearInputValue(){
-        setInputValue('')
+        setInputValue('');
+        toggleReload(!reload);
     }
 
     //SEARCH MUSICS
