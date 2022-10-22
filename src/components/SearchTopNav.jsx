@@ -7,13 +7,23 @@ import { faChevronLeft, faChevronRight, faSearch, faClose } from '@fortawesome/f
 
 
 
-const TopNavs = () => {
+const SearchTopNavs = ({setMusics, musics}) => {
     const [inputValue, setInputValue] = useState('');
+    // CLEAR SEARCH-INPUT
     function clearInputValue(){
         setInputValue('')
     }
 
+    //SEARCH MUSICS
+    function searchMusic(e){
+        setInputValue(e.target.value);
+        const searchResult = musics.filter((item) => item.title.toLowerCase().includes(inputValue.toLowerCase()));
 
+   
+        setMusics(searchResult)
+    }
+
+    //ROUTING
     const navigate = useNavigate();
 
     const login = () => {
@@ -41,15 +51,15 @@ const TopNavs = () => {
             <div className='flex flex-row items-center flex-[1.5] justify-between h-10 bg-white ml-3 rounded-3xl px-3'>
                 <FontAwesomeIcon icon={faSearch} className='text-black text-2xl'/>
                 <input 
-                    type="search"
+                    type="text"
                     name="search"
                     id="search"
                     placeholder='What do you want to listen to?'
-                    className='py-4 h-6 flex-[2] focus:outline-none ml-3  text-black'
-                    autoComplete='off'
+                    className='py-4 h-6 flex-[2] focus:outline-none ml-3 text-black'
                     autoFocus
+                    autoComplete='off'
                     value={inputValue}
-                    onChange={(e) => {setInputValue(e.target.value)}}
+                    onChange={searchMusic}
                 />
                 <FontAwesomeIcon 
                     icon={faClose}
@@ -59,7 +69,7 @@ const TopNavs = () => {
             </div>
         </div>
 
-        <ul className='flex items-center justify-between flex-[0.6] max-w-lg font-medium text-base cursor-auto'>
+        <ul className='hidden md:flex items-center justify-between flex-[0.6] max-w-lg font-medium text-base cursor-auto'>
             <li className='hover:scale-105'>
                 <a href="spotify.com" target="_blank" className='hover:text-white'>Premium</a>
             </li>
@@ -85,4 +95,4 @@ const TopNavs = () => {
   )
 }
 
-export default TopNavs
+export default SearchTopNavs

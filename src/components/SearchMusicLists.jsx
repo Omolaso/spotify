@@ -1,28 +1,29 @@
-import React, {useState, useEffect} from 'react';
-import axios from 'axios';
+// import React, {useState, useEffect} from 'react';
+// import axios from 'axios';
+import React from 'react';
 import '../styles/SharedLayout.css';
 
 
 
 
-const SearchMusicLists = () => {
-    const [musics, setMusics] = useState([]);
+const SearchMusicLists = ({musics}) => {
+    // const [musics, setMusics] = useState([]);
  
-    const getData = () => {
-      axios.get('https://jsonplaceholder.typicode.com/photos')
-      .then((res) =>{
-        console.log(res.data);
-        setMusics(res.data)
-      })
-    }
+    // const getData = () => {
+    //   axios.get('https://jsonplaceholder.typicode.com/photos')
+    //   .then((res) =>{
+    //     // console.log(res.data);
+    //     setMusics(res.data)
+    //   })
+    // }
   
-    useEffect(() => {
-      getData();
-    }, [musics]);
+    // useEffect(() => {
+    //   getData();
+    // }, [musics]);
   
     if(musics.length < 1){
       return(
-        <div class="wait-loader"></div>
+        <div className="wait-loader"></div>
       )
     }
   
@@ -30,16 +31,16 @@ const SearchMusicLists = () => {
 
 
   return (
-    <main className=''>
-        <h3>Browse all</h3>
-        <div className='grid grid-cols-5 gap-8'>
+    <main>
+        <h3 className='font-bold text-3xl my-8'>Browse all</h3>
+        <div className='grid grid-cols-3 md:grid-cols-5 gap-8'>
             {
                 // JSON.stringify(musics)
                 musics.map((music) =>(
                     <ul key={music.id}>
                         <li>
-                            <img src={music.thumbnailUrl} alt={music.title} className='rounded-md'/>
-                            <a href={music.url} target='_blank' rel="noreferrer">Know More</a>
+                            <img src={music.thumbnailUrl} alt={music.title} className='rounded-md cursor-pointer'/>
+                            {/* <a href={music.url} target='_blank' rel="noreferrer">Know More</a> */}
                             <p>{music.title}</p>
                         </li>
                     </ul>

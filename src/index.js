@@ -4,17 +4,13 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
-// import { createContext } from 'react';
-// import musics from '../src/components/SearchMusicLists'
 
-// const AuthContext = createContext();
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      {/* <AuthContext.Provider value={musics}> */}
         <App />
-      {/* </AuthContext.Provider> */}
     </BrowserRouter>
   </React.StrictMode>
 );
