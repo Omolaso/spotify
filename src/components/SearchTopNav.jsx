@@ -6,7 +6,6 @@ import { faChevronLeft, faChevronRight, faSearch, faClose } from '@fortawesome/f
 
 
 
-
 const SearchTopNavs = ({setMusics, musics, toggleReload, reload}) => {
     const [inputValue, setInputValue] = useState('');
     // CLEAR SEARCH-INPUT
@@ -20,8 +19,7 @@ const SearchTopNavs = ({setMusics, musics, toggleReload, reload}) => {
         setInputValue(e.target.value);
         const searchResult = musics.filter((item) => item.title.toLowerCase().includes(inputValue.toLowerCase()));
 
-   
-        setMusics(searchResult)
+        setMusics(searchResult);
     }
 
     //ROUTING

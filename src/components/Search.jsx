@@ -37,7 +37,12 @@ const Search = () => {
        <section id='top-nav' className='flex-1 flex flex-col'>
 
           <div className='fixed right-0 top-0 z-10 w-full max-w-[80vw]'>
-            <SearchTopNav setMusics={setMusics} musics={musics} toggleReload={toggleReload} reload={reload}/>
+            <SearchTopNav 
+              setMusics={setMusics} 
+              musics={musics} 
+              toggleReload={toggleReload} 
+              reload={reload}
+            />
           </div>
           
           <div className='flex-1 bg-veryLightBlack p-4 flex flex-col w-full max-w-[80vw] absolute right-0 top-[60px] min-h-screen'>
