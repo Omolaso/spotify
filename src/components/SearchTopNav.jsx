@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import '../styles/SharedLayout.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronLeft, faChevronRight, faSearch, faClose } from '@fortawesome/free-solid-svg-icons';
-
+import { faChevronLeft, faChevronRight, faSearch, faClose, faBars } from '@fortawesome/free-solid-svg-icons';
+// import { useEffect } from 'react';
 
 
 const SearchTopNavs = ({setMusics, musics, toggleReload, reload}) => {
@@ -14,21 +14,34 @@ const SearchTopNavs = ({setMusics, musics, toggleReload, reload}) => {
         toggleReload(!reload);
     }
 
+
     //SEARCH MUSICS
     function searchMusic(e){
         setInputValue(e.target.value);
         const searchResult = musics.filter((item) => item.title.toLowerCase().includes(inputValue.toLowerCase()));
-
         setMusics(searchResult);
     }
 
+    function repopulate(){
+        // const errorResult = musics.filter((item) => item.title.toLowerCase().includes(!inputValue.toLowerCase()));
+
+        if(!inputValue){
+            toggleReload(!reload);
+        }
+        // if(errorResult){
+        //     setMusics(
+        //         <div> No Match </div>
+        //     )
+        // }
+    };
+  
+
+
     //ROUTING
     const navigate = useNavigate();
-
     const login = () => {
         navigate('/login')
     }
-
     //back
     const goBack = () => {
         window.history.back();
@@ -41,14 +54,14 @@ const SearchTopNavs = ({setMusics, musics, toggleReload, reload}) => {
 
 
   return (
-    <main className='flex items-center justify-between bg-lightBlack text-normalGrey p-4 h-16 '>
-        <div className='flex items-center justify-between flex-1 max-w-lg'>
-            <div className='flex flex-row items-center justify-between flex-[2] max-w-[80px]'>
+    <main className='flex items-center justify-between bg-lightBlack text-normalGrey p-6 md:p-4 md:h-20 '>
+        <div className='flex items-center justify-between flex-1 md:max-w-lg'>
+            <div className='flex flex-row items-center justify-between flex-[2] max-w-[50px] md:max-w-[80px]'>
                 <FontAwesomeIcon icon={faChevronLeft} onClick={goBack} className='bg-lightBlack p-2 rounded-full text-lg'/>
                 <FontAwesomeIcon icon={faChevronRight} onClick={goForward} className='bg-lightBlack p-2 rounded-full text-lg'/>
             </div>
-            <div className='flex flex-row items-center flex-[1.5] justify-between h-10 bg-white ml-3 rounded-3xl px-3'>
-                <FontAwesomeIcon icon={faSearch} className='text-black text-2xl'/>
+            <div className='flex flex-row items-center flex-[0.7] md:flex-[1.5] justify-between h-8 md:h-10 bg-white ml-3 rounded-3xl px-3'>
+                <FontAwesomeIcon icon={faSearch} className='text-black text-lg md:text-2xl'/>
                 <input 
                     type="text"
                     name="search"
@@ -59,12 +72,16 @@ const SearchTopNavs = ({setMusics, musics, toggleReload, reload}) => {
                     autoComplete='off'
                     value={inputValue}
                     onChange={searchMusic}
+                    onKeyUp={repopulate}
                 />
                 <FontAwesomeIcon 
                     icon={faClose}
-                    className={inputValue ? 'searchInputCloseActive' : 'searchInputClose'}
+                    className={inputValue ? 'block text-black text-base md:text-3xl' : 'hidden'}
                     onClick={clearInputValue}
                 />
+            </div>
+            <div className='block md:hidden'>
+                <FontAwesomeIcon icon={faBars} className="text-lg cursor-pointer"/>
             </div>
         </div>
 

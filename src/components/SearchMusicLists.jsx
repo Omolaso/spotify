@@ -1,34 +1,14 @@
-// import React, {useState, useEffect} from 'react';
-// import axios from 'axios';
 import React from 'react';
 import '../styles/SharedLayout.css';
 
 
-
-
-const SearchMusicLists = ({musics}) => {
-    // const [musics, setMusics] = useState([]);
- 
-    // const getData = () => {
-    //   axios.get('https://jsonplaceholder.typicode.com/photos')
-    //   .then((res) =>{
-    //     // console.log(res.data);
-    //     setMusics(res.data)
-    //   })
-    // }
+const SearchMusicLists = ({ musics }) => {
   
-    // useEffect(() => {
-    //   getData();
-    // }, [musics]);
-  
-    if(musics.length < 1){
+    if(!musics.length){
       return(
         <div className="wait-loader"></div>
       )
-    }
-  
-    // const [id, thumbnailUrl, title, url] = musics; destructuring.
-
+    };
 
   return (
     <main>

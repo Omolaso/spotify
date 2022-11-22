@@ -30,13 +30,12 @@ const Search = () => {
   return (
     <main className='flex flex-row relative'>
 
-       <section id='side-nav' className='min-h-screen w-full max-w-[20vw] fixed'>
+       <section id='side-nav' className='min-h-screen w-full max-w-[20vw] fixed hidden md:block'>
           <Navs/>
        </section>
 
        <section id='top-nav' className='flex-1 flex flex-col'>
-
-          <div className='fixed right-0 top-0 z-10 w-full max-w-[80vw]'>
+          <div className='fixed right-0 top-0 z-10 w-full max-w-[100vw] md:max-w-[80vw]'>
             <SearchTopNav 
               setMusics={setMusics} 
               musics={musics} 
@@ -45,13 +44,13 @@ const Search = () => {
             />
           </div>
           
-          <div className='flex-1 bg-veryLightBlack p-4 flex flex-col w-full max-w-[80vw] absolute right-0 top-[60px] min-h-screen'>
+          <div className='flex-1 bg-veryLightBlack p-4 flex flex-col w-full max-w-[100vw] md:max-w-[80vw] absolute right-0 top-[60px] min-h-screen'>
 
             <div id='content-container' className='flex-1 text-white px-4 py-6'>
               <SearchMusicLists musics={musics}/>
             </div>
 
-            <div className='mt-8'>
+            <div className='mt-8 hidden md:block'>
               <Footer/>
             </div>
 
