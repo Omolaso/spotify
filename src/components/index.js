@@ -1,0 +1,11 @@
+export { default as Home } from "./Home.jsx";
+export { default as Footer } from "./Footer.jsx";
+export { default as ForgotPassword } from "./ForgotPassword.jsx";
+export { default as Login } from "./Login.jsx";
+export { default as SideNavs } from "./Navs.jsx";
+export { default as Search } from "./Search.jsx";
+export { default as SearchMusicLists } from "./SearchMusicLists.jsx";
+export { default as SearchTopNav } from "./SearchTopNav.jsx";
+export { default as SharedLayout } from "./SharedLayout.jsx";
+export { default as SignUp } from "./SignUp.jsx";
+export { default as TopNavs } from "./TopNavs.jsx";

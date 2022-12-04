@@ -3,7 +3,6 @@ import Footer from './Footer';
 import Navs from './Navs';
 import SearchMusicLists from './SearchMusicLists';
 import SearchTopNav from './SearchTopNav';
-import '../styles/SharedLayout.css';
 import axios from 'axios';
 
 
@@ -13,9 +12,11 @@ const Search = () => {
   const [reload, toggleReload] = useState(false);
  
   const getData = () => {
-    axios.get('https://jsonplaceholder.typicode.com/photos')
+    axios.get('https://musica-api.onrender.com/popular')
+    // axios.get('https://musica-api.onrender.com/new')
+    // axios.get('https://musica-api.onrender.com/playlist')
     .then((res) =>{
-      // console.log(res.data);
+      console.log(res.data);
       setMusics(res.data)
       })
     }
@@ -30,7 +31,7 @@ const Search = () => {
   return (
     <main className='flex flex-row relative'>
 
-       <section id='side-nav' className='min-h-screen w-full max-w-[20vw] fixed hidden md:block'>
+       <section className='min-h-screen w-full max-w-[20vw] fixed hidden md:block'>
           <Navs/>
        </section>
 
@@ -39,18 +40,18 @@ const Search = () => {
             <SearchTopNav 
               setMusics={setMusics} 
               musics={musics} 
-              toggleReload={toggleReload} 
+              toggleReload={toggleReload}
               reload={reload}
             />
           </div>
           
-          <div className='flex-1 bg-veryLightBlack p-4 flex flex-col w-full max-w-[100vw] md:max-w-[80vw] absolute right-0 top-[60px] min-h-screen'>
+          <div className='flex-1 bg-veryLightBlack flex flex-col w-full max-w-[100vw] md:max-w-[80vw] absolute right-0 top-[60px] min-h-screen'>
 
-            <div id='content-container' className='flex-1 text-white px-4 py-6'>
+            <div className='flex-1 text-white border-4'>
               <SearchMusicLists musics={musics}/>
             </div>
 
-            <div className='mt-8 hidden md:block'>
+            <div className='mt-4'>
               <Footer/>
             </div>
 

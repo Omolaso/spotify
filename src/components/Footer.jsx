@@ -4,74 +4,74 @@ import { faInstagram, faTwitter, faFacebook } from '@fortawesome/free-brands-svg
 
 const Footer = () => {
   return (
-    <>
-        <main className='flex flex-row items-start justify-between'>
-            <section id='company-community-useful' className='flex flex-row flex-1 items-start justify-between max-w-lg'>
+    <main className='p-4'>
+        <section className='flex flex-col md:flex-row items-start justify-between gap-y-6 w-full'>
+            <section className='flex flex-col md:flex-row flex-1 items-start justify-between max-w-lg gap-y-4 w-full'>
                 <div className='flex flex-col'>
                     <h1 className='text-white font-bold'>Company</h1>
-                    <div id='company-links' className='mt-2 flex flex-col gap-y-2'>
-                        <a href="https://www.spotify.com" className='hover:underline hover:text-white hover:font-normal text-normalGrey font-normal'>About</a>
-                        <a href="https://www.spotify.com" className='hover:underline hover:text-white hover:font-normal  text-normalGrey font-normal'>Jobs</a>
-                        <a href="https://www.spotify.com" className='hover:underline hover:text-white hover:font-normal text-normalGrey font-normal'>For the Record</a>
+                    <div id='company-links' className='mt-2 flex flex-col gap-y-1 md:gap-y-2'>
+                        <a href="##" className='hover:underline hover:text-white hover:font-normal text-normalGrey font-normal'>About</a>
+                        <a href="##" className='hover:underline hover:text-white hover:font-normal  text-normalGrey font-normal'>Jobs</a>
+                        <a href="##" className='hover:underline hover:text-white hover:font-normal text-normalGrey font-normal'>For the Record</a>
                     </div>
                 </div>
 
                 <div className='flex flex-col'>
                     <h1 className='text-white font-bold'>Communities</h1>
-                    <div id='community-links' className='mt-2 flex flex-col gap-y-2'>
-                        <a href="https://www.spotify.com" className='hover:underline hover:text-white hover:font-normal text-normalGrey font-normal'>For Artists</a>
-                        <a href="https://www.spotify.com" className='hover:underline hover:text-white hover:font-normal text-normalGrey font-normal'>Developers</a>
-                        <a href="https://www.spotify.com" className='hover:underline hover:text-white hover:font-normal text-normalGrey font-normal'>Advertising</a>
-                        <a href="https://www.spotify.com" className='hover:underline hover:text-white hover:font-normal text-normalGrey font-normal'>Investors</a>
-                        <a href="https://www.spotify.com" className='hover:underline hover:text-white hover:font-normal text-normalGrey font-normal'>Vendors</a>
+                    <div id='community-links' className='mt-2 flex flex-col gap-y-1 md:gap-y-2'>
+                        <a href="##" className='hover:underline hover:text-white hover:font-normal text-normalGrey font-normal'>For Artists</a>
+                        <a href="##" className='hover:underline hover:text-white hover:font-normal text-normalGrey font-normal'>Developers</a>
+                        <a href="##" className='hover:underline hover:text-white hover:font-normal text-normalGrey font-normal'>Advertising</a>
+                        <a href="##" className='hover:underline hover:text-white hover:font-normal text-normalGrey font-normal'>Investors</a>
+                        <a href="##" className='hover:underline hover:text-white hover:font-normal text-normalGrey font-normal'>Vendors</a>
                     </div>
                 </div>
 
                 <div className='flex flex-col'>
                     <h1 className='text-white font-bold'>Useful Links</h1>
-                    <div id='useful-links' className='mt-2 flex flex-col gap-y-2'>
-                        <a href="https://www.spotify.com" className='hover:underline hover:text-white hover:font-normal text-normalGrey font-normal'>Support</a>
-                        <a href="https://www.spotify.com" className='hover:underline hover:text-white hover:font-normal text-normalGrey font-normal'>Free Mobile App</a>
-                        <a href="https://www.spotify.com" className='hover:underline hover:text-white hover:font-normal text-normalGrey font-normal'>Car Thing</a>
+                    <div id='useful-links' className='mt-2 flex flex-col gap-y-1 md:gap-y-2'>
+                        <a href="##" className='hover:underline hover:text-white hover:font-normal text-normalGrey font-normal'>Support</a>
+                        <a href="##" className='hover:underline hover:text-white hover:font-normal text-normalGrey font-normal'>Free Mobile App</a>
+                        <a href="##" className='hover:underline hover:text-white hover:font-normal text-normalGrey font-normal'>Car Thing</a>
                     </div>
                 </div>
             </section>        
             
-            <section id='brand-links'>
-                <div className='flex flex-row items-center justify-around w-[250px] text-white font-normal'>
-                    <a href="https://www.spotify.com" className='bg-darkGrey hover:bg-darkGreyHover px-3 py-2 rounded-[100%]' title='Instagram'>
-                        <FontAwesomeIcon icon={faInstagram} className='text-xl'/>
+            <section className='flex flex-col gap-x-3'>
+                <h1 className='text-white font-bold block md:hidden'>Social</h1>
+                <div className='flex flex-col md:flex-row items-start md:items-center gap-y-2 md:gap-y-0 md:justify-around w-[250px] text-white font-normal'>
+                    <a href="##" title='Instagram'>
+                        <FontAwesomeIcon icon={faInstagram} className='text-base md:text-xl bg-darkGrey hover:bg-darkGreyHover p-[6px] md:p-[12px] rounded-full'/>
                     </a>
-                    <a href="https://www.spotify.com" className='bg-darkGrey hover:bg-darkGreyHover px-3 py-2 rounded-[100%]' title='Twitter'>
-                        <FontAwesomeIcon icon={faTwitter} className='text-xl'/>
+                    <a href="##" title='Twitter'>
+                        <FontAwesomeIcon icon={faTwitter} className='text-base md:text-xl bg-darkGrey hover:bg-darkGreyHover p-[6px] md:p-[12px] rounded-full'/>
                     </a>
-                    <a href="https://www.spotify.com" className='bg-darkGrey hover:bg-darkGreyHover px-3 py-2 rounded-[100%]' title='Facebook'>
-                        <FontAwesomeIcon icon={faFacebook} className='text-xl'/>
+                    <a href="##" title='Facebook'>
+                        <FontAwesomeIcon icon={faFacebook} className='text-base md:text-xl bg-darkGrey hover:bg-darkGreyHover p-[6px] md:p-[12px] rounded-full'/>
                     </a>
                 </div>
             </section>
-        </main>
+        </section>
 
-        <div className='my-8'>
+        <div className='my-8 w-full'>
             <hr className='border-darkGrey'/>
         </div>
 
-        <div id='footer-links' className='flex flex-row items-center justify-between my-8 '>
+        <div className='flex flex-col md:flex-row items-start md:items-center justify-between mt-8 gap-y-3'>
 
-           <section className='flex flex-row flex-1 items-center gap-x-4 text-[15px]'>
-                <a href="https://www.spotify.com" className='hover:underline hover:text-white hover:font-normal text-normalGrey font-normal'>Legal</a>
-                <a href="https://www.spotify.com" className='hover:underline hover:text-white hover:font-normal text-normalGrey font-normal'>Privacy Center</a>
-                <a href="https://www.spotify.com" className='hover:underline hover:text-white hover:font-normal text-normalGrey font-normal'>Privacy Policy</a>
-                <a href="https://www.spotify.com" className='hover:underline hover:text-white hover:font-normal text-normalGrey font-normal'>Cookies</a>
-                <a href="https://www.spotify.com" className='hover:underline hover:text-white hover:font-normal text-normalGrey font-normal'>About ADs</a>
-                {/* <a href="https://www.spotify.com" className='hover:underline hover:text-white hover:font-normal text-normalGrey font-normal'>Additional CA Privacy Disclosures</a> */}
-           </section>
+           <section className='flex flex-col md:flex-row flex-1 items-start md:items-center gap-2 md:gap-4 text-base'>
+                <a href="##" className='hover:underline hover:text-white hover:font-normal text-normalGrey font-normal'>Legal</a>
+                <a href="##" className='hover:underline hover:text-white hover:font-normal text-normalGrey font-normal'>Privacy Center</a>
+                <a href="##" className='hover:underline hover:text-white hover:font-normal text-normalGrey font-normal'>Privacy Policy</a>
+                <a href="##" className='hover:underline hover:text-white hover:font-normal text-normalGrey font-normal'>Cookies</a>
+                <a href="##" className='hover:underline hover:text-white hover:font-normal text-normalGrey font-normal'>About ADs</a>
+            </section>
 
-           <section className='text-normalGrey text-sm'>
-                <p>© 2022 Spotify AB</p>
+           <section className='text-normalGrey text-lg'>
+                <p>© 2022 Spotify</p>
            </section>
         </div>
-    </>
+    </main>
   )
 }
 

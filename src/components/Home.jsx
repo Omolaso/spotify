@@ -1,7 +1,7 @@
 import React from 'react';
 // import { useContext } from 'react';
 // import axios from 'axios';
-import '../styles/SharedLayout.css';
+
 
 const Home = () => {
   // const musicValue = useContext(AuthContext)

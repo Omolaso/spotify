@@ -2,12 +2,11 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import google from '../images/google.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { faCircleExclamation } from "@fortawesome/free-solid-svg-icons";
 import { faSpotify, faFacebook, faApple } from '@fortawesome/free-brands-svg-icons';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import '../styles/AddedContent.css';
-// import validate from './Validate';
+// import '../styles/AddedContent.css';
+// import validate from '../Validate';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -17,7 +16,6 @@ const Login = () => {
   }
 
   // FORMIK
-
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -56,7 +54,7 @@ const Login = () => {
   return (
       <main className='text-center'>
         <header className='py-3 md:py-6'>
-          <Link to='/' className='hover:cursor-default text-2xl md:text-4xl font-bold'>
+          <Link to='/' className='text-2xl md:text-4xl font-bold cursor-pointer'>
             <FontAwesomeIcon icon={faSpotify} className='text-5xl md:text-6xl align-middle'/> Spotify
           </Link>
         </header>
@@ -110,7 +108,6 @@ const Login = () => {
 
           <form
             onSubmit={formik.handleSubmit}
-            // onReset={formik.handleReset}
             className='mt-4 text-left w-full max-w-md mx-auto'
             >
 
@@ -124,7 +121,7 @@ const Login = () => {
                 className='border w-full py-3 px-3 hover:border-black rounded'
                 {...formik.getFieldProps('email')}
               />
-              {formik.touched.email && formik.errors.email ? <div id='errorSign' className='text-formErrorColor text-sm font-bold'>{formik.errors.email}</div> : null}
+              {formik.touched.email && formik.errors.email ? <div className='errorSign text-formErrorColor text-sm font-bold'>{formik.errors.email}</div> : null}
             </div>
 
             <div className='flex flex-col mb-6'>
@@ -134,7 +131,6 @@ const Login = () => {
                 id='password' 
                 name='password' 
                 placeholder='Password'
-                // pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                 title="Password must contain at least a digit, an uppercase and lowercase letter, a dynamic symbol and at least 8 characters"
                 className='border w-full py-3 px-3 hover:border-black rounded'
                 {...formik.getFieldProps('password')}

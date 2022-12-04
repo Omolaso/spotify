@@ -1,10 +1,7 @@
 import React from 'react';
-import '../styles/SharedLayout.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
-// import { render } from "react-dom";
-// import { motion } from "framer-motion";
 
 const TopNavs = () => {
     const navigate = useNavigate();

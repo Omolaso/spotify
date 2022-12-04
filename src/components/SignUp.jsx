@@ -75,7 +75,7 @@ const SignUp = () => {
   return (
     <main className='w-full max-w-4xl mx-auto text-center py-10 px-4'>
       <header>
-        <Link to='/' className='hover:cursor-default text-lg md:text-2xl font-bold'>
+        <Link to='/' className='text-lg md:text-2xl font-bold cursor-pointer'>
           <FontAwesomeIcon icon={faSpotify} className='text-3xl md:text-4xl align-middle'/> Spotify
         </Link>
         <h3 className='text-2xl md:text-4xl font-semibold mt-8'>Sign up for free to start <br /> listening.</h3>
